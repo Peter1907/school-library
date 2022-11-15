@@ -11,12 +11,12 @@ class Person
   attr_getter :id
 
   def can_use_services?
-    is_of_age?
+    of_age?
   end
 
   private
 
-  def is_of_age?
+  def of_age?
     @age >= 18
   end
 end
