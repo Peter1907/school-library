@@ -47,7 +47,7 @@ class App
 
     case option
     when '1'
-      create_student 
+      create_student
     when '2'
       create_teacher
     else
