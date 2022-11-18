@@ -15,6 +15,10 @@ class Person < Nameable
     @rentals = []
   end
 
+  def self.all
+    ObjectSpace.each_object(self).to_a
+  end
+
   def correct_name
     @name
   end
@@ -27,16 +31,13 @@ class Person < Nameable
     @rentals << Rental.new(date, book, self)
   end
 
+  def add_full_rental(rental)
+    @rentals << rental
+  end
+
   private
 
   def of_age?
     @age >= 18
   end
 end
-
-person = Person.new(22, 'maximilianus')
-p person.correct_name
-capitalized_person = CapitalizeDecorator.new(person)
-p capitalized_person.correct_name
-capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
-p capitalized_trimmed_person.correct_name
