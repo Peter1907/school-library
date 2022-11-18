@@ -22,28 +22,24 @@ class Main
   end
 
   def handle_selection
-    option = gets.chomp
+    option = gets.chomp.to_i
+    selection = {
+      1 => 'list_all_books',
+      2 => 'list_all_people',
+      3 => 'create_person',
+      4 => 'create_book',
+      5 => 'create_rental',
+      6 => 'list_all_rentals_for_person_id'
+    }
     case option
-    when '1'
-      @app.list_all_books
+    when 1..6
+      @app.send(selection[option])
       run
-    when '2'
-      @app.list_all_people
-      run
-    when '3'
-      @app.create_person
-      run
-    when '4'
-      @app.create_book
-      run
-    when '5'
-      @app.create_rental
-      run
-    when '6'
-      @app.list_all_rentals_for_person_id
-      run
-    when '7'
+    when 7
       puts 'Thank you for using this app!'
+    else
+      puts 'That is not a valid option, Please enter a number between 1 and 7'
+      run
     end
   end
 
