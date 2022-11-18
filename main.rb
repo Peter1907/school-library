@@ -2,8 +2,10 @@
 
 require './app'
 
-def main
-  app = App.new
+class Main
+  def initialize
+    @app = App.new
+  end
 
   def interface
     puts 'Please choose an option by entering a number:'
@@ -16,53 +18,51 @@ def main
     puts '7 - Exit'
   end
 
-  interface
-
-  def run(app)
+  def run
     option = gets.chomp
     case option
     when '1'
-      app.list_all_books
+      @app.list_all_books
       puts
       interface
-      run(app)
+      run
     when '2'
-      app.list_all_people
+      @app.list_all_people
       puts
       interface
-      run(app)
+      run
     when '3'
-      app.create_person
+      @app.create_person
       puts
       interface
-      run(app)
+      run
     when '4'
-      app.create_book
+      @app.create_book
       puts
       interface
-      run(app)
+      run
     when '5'
-      app.create_rental
+      @app.create_rental
       puts
       interface
-      run(app)
+      run
     when '6'
-      app.list_all_rentals_for_person_id
+      @app.list_all_rentals_for_person_id
       puts
       interface
-      run(app)
+      run
     when '7'
       puts 'Thank you for using this app!'
     else
       puts 'That is not a valid input, Enter a number between 1 and 7'
       puts
       interface
-      run(app)
+      run
     end
   end
-  
   private :interface, :run
-  run(app)
 end
 
-main
+main = Main.new
+main.interface
+main.run

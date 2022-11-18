@@ -13,7 +13,7 @@ class App
     Person.all.each { |person| puts "Name: #{person.name}, Age: #{person.age}, ID: #{person.id}" }
   end
 
-  def @create_student
+  def create_student
     puts 'Name: '
     name = gets.chomp
     puts 'Age: '
@@ -27,7 +27,7 @@ class App
     puts 'Student created successfully'
   end
 
-  def @create_teacher
+  def create_teacher
     puts 'Name: '
     name = gets.chomp
     puts 'Age: '
@@ -47,9 +47,9 @@ class App
 
     case option
     when '1'
-      @create_student 
+      create_student 
     when '2'
-      @create_teacher
+      create_teacher
     else
       puts 'That is not a valid input'
       nil
