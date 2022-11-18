@@ -34,10 +34,7 @@ class App
     age = gets.chomp
     puts 'Specialization: '
     specialization = gets.chomp
-    puts 'Has parent permission? [Y/N]: '
-    parent_permission = gets.chomp
-    parent_permission = parent_permission.downcase == 'y'
-    Teacher.new(age, specialization, name, parent_permission: parent_permission)
+    Teacher.new(age, specialization, name)
     puts 'Teacher created successfully'
   end
 
