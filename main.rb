@@ -60,7 +60,8 @@ def main
       run(app)
     end
   end
-
+  
+  private :interface, :run
   run(app)
 end
 

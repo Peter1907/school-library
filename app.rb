@@ -13,35 +13,43 @@ class App
     Person.all.each { |person| puts "Name: #{person.name}, Age: #{person.age}, ID: #{person.id}" }
   end
 
+  def @create_student
+    puts 'Name: '
+    name = gets.chomp
+    puts 'Age: '
+    age = gets.chomp
+    puts 'Has parent permission? [Y/N]: '
+    parent_permission = gets.chomp
+    parent_permission = parent_permission.downcase == 'y'
+    puts 'Classroom: '
+    classroom = gets.chomp
+    Student.new(age, classroom, name, parent_permission: parent_permission)
+    puts 'Student created successfully'
+  end
+
+  def @create_teacher
+    puts 'Name: '
+    name = gets.chomp
+    puts 'Age: '
+    age = gets.chomp
+    puts 'Specialization: '
+    specialization = gets.chomp
+    puts 'Has parent permission? [Y/N]: '
+    parent_permission = gets.chomp
+    parent_permission = parent_permission.downcase == 'y'
+    Teacher.new(age, specialization, name, parent_permission: parent_permission)
+    puts 'Teacher created successfully'
+  end
+
   def create_person
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     option = gets.chomp
 
     case option
     when '1'
-      puts 'Name: '
-      name = gets.chomp
-      puts 'Age: '
-      age = gets.chomp
-      puts 'Has parent permission? [Y/N]: '
-      parent_permission = gets.chomp
-      parent_permission = parent_permission.downcase == 'y'
-      puts 'Classroom: '
-      classroom = gets.chomp
-      Student.new(age, classroom, name, parent_permission: parent_permission)
-      puts 'Person created successfully'
+      @create_student 
     when '2'
-      puts 'Name: '
-      name = gets.chomp
-      puts 'Age: '
-      age = gets.chomp
-      puts 'Specialization: '
-      specialization = gets.chomp
-      puts 'Has parent permission? [Y/N]: '
-      parent_permission = gets.chomp
-      parent_permission = parent_permission.downcase == 'y'
-      Teacher.new(age, specialization, name, parent_permission: parent_permission)
-      puts 'Person created successfully'
+      @create_teacher
     else
       puts 'That is not a valid input'
       nil
